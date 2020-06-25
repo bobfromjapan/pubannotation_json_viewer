@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="marker.css">
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="src/jquery.min.js"></script>
+<script>
+var annotation_words = [];
+var json_file_name ="example.json"
+function json_parse() {
+  $.getJSON(json_file_name , function(data) {
+    var
+      len = data.length;
+      i_len = data[0].denotations.length;
+      //alert(i_len);
+      document.getElementById("demo").innerHTML = data[0].text;
+      var var_text = data[0].text
+
+    for(var i = 0; i < i_len; i++) {
+      annotation_words.push([var_text.substr(data[0].denotations[i].span.begin, data[0].denotations[i].span.end - data[0].denotations[i].span.begin),data[0].denotations[i].obj]);  
+    };
+      alert(annotation_words);
+  });
+
+};
+var backupOriginal = "";
+function replacer( str, word , att  ) {
+    var SearchString = '(' + word + ')';
+    var RegularExp = new RegExp( SearchString, "g" );
+    var ReplaceString = '<span class="' + att + '">$1</span>';
+    var ResString = str.replace( RegularExp , ReplaceString );
+    return ResString;
+}
+function addhighlight() {
+    backupOriginal = document.getElementById("demo").innerHTML;
+    var forShow = backupOriginal;
+    for(var j = 0; j < annotation_words.length; j++){
+      forShow = replacer( forShow, annotation_words[j][0], annotation_words[j][1] );
+      //alert(j);
+    }
+    document.getElementById("demo").innerHTML = forShow;
+}
+function clearhighlight() {
+    document.getElementById("demo").innerHTML = backupOriginal; 
+    backupOriginal = ""; 
+}
+function highlightcheck() {
+    if( backupOriginal.length == 0 ) {
+        addhighlight();
+    }
+    else {
+        clearhighlight();
+    }
+}
+function setfilename() {
+    json_file_name = document.getElementById("filename").value;
+    alert(json_file_name)
+}
+</script>
+</head>
+<body>
+    <p>filename：</p>
+    <input type="text" name="filename" id="filename" value="data2.json">
+    <input type="button" value = "set file name" onclick="setfilename();">
+    <p id="demo"></p>
+    <input type="button" name="json" value="json" onClick="json_parse()">
+    <input type="button" value="highlight" id="btn-onoff" onClick="highlightcheck()">
+</body>
+</html>
