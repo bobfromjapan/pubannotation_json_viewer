@@ -1,7 +1,0 @@
-span.disease { background-color: yellow; } /* 黄色ハイライト用 */
-span.gene { background-color: lime; }   /* 緑色ハイライト用 */
-span.mutation { background-color: rgb(255, 145, 0); }   /* 水色ハイライト用 */
-span.drug { background-color: #0ff; }   /* 水色ハイライト用 */
-span.pathway { background-color: rgb(225, 0, 255); }   /* 水色ハイライト用 */
-span.protein { background-color: rgb(255, 0, 0); }   /* 水色ハイライト用 */
-span.mark7 { background-color: rgb(153, 0, 255); }   /* 水色ハイライト用 */
