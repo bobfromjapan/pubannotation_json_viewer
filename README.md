@@ -12,3 +12,4 @@
 
 4. Push `json` button to parse and show the annotated text, and you can get hilighted text by clicking `highlight` button.
 
+![img](https://github.com/bobfromjapan/pubannotation_json_viewer/blob/master/md_img/img.jpg)
