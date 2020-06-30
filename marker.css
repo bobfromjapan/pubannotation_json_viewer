@@ -5,3 +5,21 @@ span.drug { background-color: #0ff; }
 span.pathway { background-color: rgb(225, 0, 255); } 
 span.protein { background-color: rgb(255, 0, 0); }
 span.mark7 { background-color: rgb(153, 0, 255); }  
+#fixed div {
+    position: absolute;
+  }
+  .box {
+    display: none;
+    position: fixed;    
+    top: 0;
+    right: 0;
+    padding: 16px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;  
+    border-radius: 8px;
+    background: #333;
+    color: #fff;
+  }
+  span:hover + p.box {
+    display: block;
+  }
